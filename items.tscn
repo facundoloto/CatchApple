@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://3g3hov7mhlcl"]
+
+[ext_resource type="Texture2D" uid="uid://eftykesxbqpy" path="res://Assets/manzana.png" id="1_jr1qu"]
+[ext_resource type="Script" path="res://items.gd" id="1_xcxsp"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fhxq3"]
+size = Vector2(28, 28)
+
+[node name="Items" type="Area2D"]
+texture_filter = 1
+position = Vector2(61, 28)
+script = ExtResource("1_xcxsp")
+
+[node name="Apple" type="Sprite2D" parent="."]
+position = Vector2(4, 1)
+scale = Vector2(0.388889, 0.341463)
+texture = ExtResource("1_jr1qu")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(4, 1)
+shape = SubResource("RectangleShape2D_fhxq3")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

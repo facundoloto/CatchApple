@@ -1,0 +1,66 @@
+[gd_scene load_steps=7 format=3 uid="uid://ctrydn8f3d5c5"]
+
+[ext_resource type="PackedScene" uid="uid://hlbsy5121cq4" path="res://Spawmer/spawner.tscn" id="1_50qnp"]
+[ext_resource type="PackedScene" uid="uid://crty1q1ti8nv6" path="res://Player/Player.tscn" id="2_f11tg"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_m0lbp"]
+size = Vector2(602.25, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_54jiw"]
+size = Vector2(3, 382)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_54mcy"]
+size = Vector2(3, 382)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3ot0r"]
+size = Vector2(602.25, 20)
+
+[node name="AreaCollision" type="Node"]
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="floor" type="StaticBody2D" parent="Area2D"]
+position = Vector2(12, 409)
+
+[node name="collitionFloor" type="CollisionShape2D" parent="Area2D/floor"]
+texture_filter = 1
+position = Vector2(287, -6)
+shape = SubResource("RectangleShape2D_m0lbp")
+
+[node name="left" type="StaticBody2D" parent="Area2D"]
+position = Vector2(21, 70)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D/left"]
+position = Vector2(-21, 130)
+shape = SubResource("RectangleShape2D_54jiw")
+
+[node name="right" type="StaticBody2D" parent="Area2D"]
+position = Vector2(42, 140)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D/right"]
+position = Vector2(556, 60)
+shape = SubResource("RectangleShape2D_54mcy")
+
+[node name="ceilling" type="StaticBody2D" parent="Area2D"]
+position = Vector2(-179, 286)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D/ceilling"]
+position = Vector2(475, -278)
+shape = SubResource("RectangleShape2D_3ot0r")
+
+[node name="Player" parent="." instance=ExtResource("2_f11tg")]
+position = Vector2(280, 358)
+
+[node name="Items" type="Node2D" parent="."]
+
+[node name="Spawner" parent="Items" instance=ExtResource("1_50qnp")]
+position = Vector2(220, 37)
+
+[node name="Spawner2" parent="Items" instance=ExtResource("1_50qnp")]
+position = Vector2(361, 38)
+
+[node name="Spawner3" parent="Items" instance=ExtResource("1_50qnp")]
+position = Vector2(497, 32)
+
+[node name="Spawner4" parent="Items" instance=ExtResource("1_50qnp")]
+position = Vector2(82, 45)

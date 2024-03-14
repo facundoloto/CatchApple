@@ -1,0 +1,89 @@
+[gd_scene load_steps=15 format=3 uid="uid://crty1q1ti8nv6"]
+
+[ext_resource type="Texture2D" uid="uid://jnvy8mycln52" path="res://Assets/Jugador/run/player-run-4.png" id="1"]
+[ext_resource type="Script" path="res://Player/Player.gd" id="1_alybk"]
+[ext_resource type="Texture2D" uid="uid://weg4xrc22kb1" path="res://Assets/Jugador/idle/player-idle-2.png" id="2"]
+[ext_resource type="Texture2D" uid="uid://dh1wyetn1f1sd" path="res://Assets/Jugador/idle/player-idle-3.png" id="3"]
+[ext_resource type="Texture2D" uid="uid://c7o8f8acp8amb" path="res://Assets/Jugador/idle/player-idle-4.png" id="4"]
+[ext_resource type="Texture2D" uid="uid://bnbwqy6xqdonc" path="res://Assets/Jugador/idle/player-idle-1.png" id="5"]
+[ext_resource type="Texture2D" uid="uid://dckla7abekh81" path="res://Assets/Jugador/run/player-run-2.png" id="6"]
+[ext_resource type="Texture2D" uid="uid://bgnjq810xtokm" path="res://Assets/Jugador/run/player-run-3.png" id="7"]
+[ext_resource type="Texture2D" uid="uid://c286c2o6uefr3" path="res://Assets/Jugador/hurt/player-hurt-1.png" id="8"]
+[ext_resource type="Texture2D" uid="uid://b0sk237h16hhq" path="res://Assets/Jugador/hurt/player-hurt-2.png" id="9"]
+[ext_resource type="Texture2D" uid="uid://dn4gcqhtlh11y" path="res://Assets/Jugador/run/player-run-1.png" id="10"]
+
+[sub_resource type="ShaderMaterial" id="3"]
+
+[sub_resource type="RectangleShape2D" id="1"]
+size = Vector2(31, 35)
+
+[sub_resource type="SpriteFrames" id="2"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9")
+}],
+"loop": true,
+"name": &"hurt",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("10")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7")
+}],
+"loop": true,
+"name": &"run",
+"speed": 8.0
+}]
+
+[node name="Player" type="CharacterBody2D" groups=["Player"]]
+light_mask = 17
+material = SubResource("3")
+script = ExtResource("1_alybk")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(1.5, 10.5)
+shape = SubResource("1")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+process_mode = 3
+z_index = 1
+texture_filter = 1
+use_parent_material = true
+position = Vector2(9.53674e-07, 3)
+scale = Vector2(1.68182, 1.59375)
+sprite_frames = SubResource("2")
+animation = &"run"
+frame_progress = 0.819535
+flip_h = true
+
+[node name="Sprite2D" type="Sprite2D" parent="."]

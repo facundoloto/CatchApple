@@ -1,0 +1,77 @@
+[gd_scene load_steps=5 format=3 uid="uid://d4e43cwnts4ak"]
+
+[ext_resource type="Texture2D" uid="uid://caft4om6jb8ws" path="res://Assets/bosque.png" id="1_c3b1c"]
+[ext_resource type="Script" path="res://Scenes/Game.gd" id="1_t5eh8"]
+[ext_resource type="PackedScene" uid="uid://ctrydn8f3d5c5" path="res://Scenes/areaCollision.tscn" id="2_6dnlr"]
+
+[sub_resource type="GDScript" id="GDScript_2whwd"]
+script/source = "extends Button
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	pass # Replace with function body.
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta):
+	pass
+
+
+"
+
+[node name="Game" type="Node"]
+script = ExtResource("1_t5eh8")
+
+[node name="Bosque" type="Sprite2D" parent="."]
+position = Vector2(299, 201)
+scale = Vector2(0.47207, 0.564583)
+texture = ExtResource("1_c3b1c")
+
+[node name="AreaCollision" parent="." instance=ExtResource("2_6dnlr")]
+
+[node name="Score" type="Label" parent="."]
+anchors_preset = -1
+anchor_right = 0.017
+offset_left = 25.0
+offset_top = 23.0
+offset_right = 54.8
+offset_bottom = 46.0
+text = "0"
+
+[node name="gameOver" type="Node2D" parent="."]
+visible = false
+
+[node name="Reload" type="Button" parent="gameOver"]
+layout_direction = 1
+offset_left = 264.0
+offset_top = 190.0
+offset_right = 305.0
+offset_bottom = 221.0
+text = "Reload
+"
+script = SubResource("GDScript_2whwd")
+
+[node name="lost" type="Label" parent="gameOver"]
+offset_left = 249.0
+offset_top = 92.0
+offset_right = 323.0
+offset_bottom = 121.0
+text = "You Lost"
+
+[node name="message" type="Label" parent="gameOver"]
+offset_left = 245.0
+offset_top = 128.0
+offset_right = 331.0
+offset_bottom = 157.0
+text = "your score:"
+
+[node name="scoreFinal" type="Label" parent="gameOver"]
+offset_left = 254.0
+offset_top = 152.0
+offset_right = 315.0
+offset_bottom = 175.0
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="pressed" from="gameOver/Reload" to="." method="_on_reload_pressed"]

@@ -1,6 +1,8 @@
 extends Area2D
 
 var isApple = true
+var colletion = preload("res://items.tscn")
+var Speed := 1.0
 
 func _ready():
 	if randf() > .5:
@@ -18,4 +20,4 @@ func _on_body_entered(body):
 	queue_free()
 
 func _process(delta):
-	position.y += 2
+	position.y += Speed

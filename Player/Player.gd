@@ -25,6 +25,7 @@ func jump():
 		var jump_velocity = Input.get_action_strength("ui_accept")
 		
 		if jump_velocity != 0 and is_on_floor():
+			$Jump.play()
 			velocity.y = 0
 			velocity.y -= jump_velocity * 350
 		
@@ -33,9 +34,11 @@ func jump():
 		move_and_slide()
 	
 func scoreUp():
+		$Catch.play()
 		emit_signal("score_up")
 		
 func died():
+		$Hurt.play()	
 		animated_sprite_2d.play("hurt")
 		emit_signal("player_died")
 		

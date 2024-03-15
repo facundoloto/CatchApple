@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://crty1q1ti8nv6"]
+[gd_scene load_steps=18 format=3 uid="uid://crty1q1ti8nv6"]
 
 [ext_resource type="Texture2D" uid="uid://jnvy8mycln52" path="res://Assets/Jugador/run/player-run-4.png" id="1"]
 [ext_resource type="Script" path="res://Player/Player.gd" id="1_alybk"]
@@ -11,11 +11,14 @@
 [ext_resource type="Texture2D" uid="uid://c286c2o6uefr3" path="res://Assets/Jugador/hurt/player-hurt-1.png" id="8"]
 [ext_resource type="Texture2D" uid="uid://b0sk237h16hhq" path="res://Assets/Jugador/hurt/player-hurt-2.png" id="9"]
 [ext_resource type="Texture2D" uid="uid://dn4gcqhtlh11y" path="res://Assets/Jugador/run/player-run-1.png" id="10"]
+[ext_resource type="AudioStream" uid="uid://cym2mmwjejea0" path="res://Assets/Sonidos/beep.wav" id="12_jt5an"]
+[ext_resource type="AudioStream" uid="uid://ciffg5fmk5ydq" path="res://Assets/Sonidos/8bit_bomb_explosion.mp3" id="13_aybsg"]
+[ext_resource type="AudioStream" uid="uid://bxq43ncpnw16g" path="res://Assets/Sonidos/jump_10.mp3" id="14_rmwsl"]
 
 [sub_resource type="ShaderMaterial" id="3"]
 
 [sub_resource type="RectangleShape2D" id="1"]
-size = Vector2(31, 35)
+size = Vector2(41, 47)
 
 [sub_resource type="SpriteFrames" id="2"]
 animations = [{
@@ -71,7 +74,7 @@ material = SubResource("3")
 script = ExtResource("1_alybk")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(1.5, 10.5)
+position = Vector2(9.5, 21.5)
 shape = SubResource("1")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
@@ -79,11 +82,25 @@ process_mode = 3
 z_index = 1
 texture_filter = 1
 use_parent_material = true
-position = Vector2(9.53674e-07, 3)
-scale = Vector2(1.68182, 1.59375)
+position = Vector2(8.62499, 11.25)
+scale = Vector2(2.20455, 2.10938)
 sprite_frames = SubResource("2")
 animation = &"run"
 frame_progress = 0.819535
 flip_h = true
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+
+[node name="Catch" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("12_jt5an")
+volume_db = 9.455
+attenuation = 0.732043
+
+[node name="Hurt" type="AudioStreamPlayer2D" parent="."]
+process_mode = 3
+stream = ExtResource("13_aybsg")
+volume_db = 1.0
+
+[node name="Jump" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("14_rmwsl")
+volume_db = -9.59

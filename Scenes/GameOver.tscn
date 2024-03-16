@@ -1,0 +1,103 @@
+[gd_scene load_steps=8 format=3 uid="uid://c5d38hkkkb02h"]
+
+[ext_resource type="Script" path="res://Scenes/GameOver.gd" id="1_1i6p6"]
+[ext_resource type="FontFile" uid="uid://dn3eouujxbfjf" path="res://Assets/PressStart2P-vaV7.ttf" id="1_jhv55"]
+[ext_resource type="Texture2D" uid="uid://lrgsmevgeegd" path="res://Assets/clipart1155125.png" id="2_nh2i5"]
+[ext_resource type="AudioStream" uid="uid://klgts0m74yhr" path="res://Assets/Sonidos/1x-game-over.mp3" id="2_uv2rv"]
+[ext_resource type="Texture2D" uid="uid://c286c2o6uefr3" path="res://Assets/Jugador/hurt/player-hurt-1.png" id="4_t0a5u"]
+[ext_resource type="Texture2D" uid="uid://b0sk237h16hhq" path="res://Assets/Jugador/hurt/player-hurt-2.png" id="5_kr6m6"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_4klj0"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_t0a5u")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_kr6m6")
+}],
+"loop": true,
+"name": &"hurt",
+"speed": 5.0
+}]
+
+[node name="GameOver" type="Node2D"]
+script = ExtResource("1_1i6p6")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_top = 2.0
+offset_right = 597.0
+offset_bottom = 398.0
+color = Color(0.0235294, 0.0235294, 0.0235294, 1)
+
+[node name="gameOver" type="CanvasLayer" parent="."]
+process_mode = 2
+
+[node name="Label" type="Label" parent="gameOver"]
+offset_left = 68.0
+offset_top = 17.0
+offset_right = 500.0
+offset_bottom = 65.0
+theme_override_fonts/font = ExtResource("1_jhv55")
+theme_override_font_sizes/font_size = 48
+text = "Game Over"
+
+[node name="score" type="Label" parent="gameOver"]
+offset_left = 222.0
+offset_top = 146.0
+offset_right = 654.0
+offset_bottom = 194.0
+theme_override_fonts/font = ExtResource("1_jhv55")
+theme_override_font_sizes/font_size = 24
+text = "score"
+
+[node name="point" type="Label" parent="gameOver"]
+offset_left = 232.0
+offset_top = 176.0
+offset_right = 334.0
+offset_bottom = 254.0
+theme_override_fonts/font = ExtResource("1_jhv55")
+theme_override_font_sizes/font_size = 24
+text = "
+
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Reload" type="Button" parent="gameOver"]
+process_mode = 3
+layout_direction = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 244.0
+offset_top = -147.0
+offset_right = 327.0
+offset_bottom = -116.0
+grow_vertical = 0
+text = "
+"
+icon = ExtResource("2_nh2i5")
+flat = true
+expand_icon = true
+
+[node name="CharacterBody2D" type="CharacterBody2D" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="CharacterBody2D"]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CharacterBody2D"]
+process_mode = 3
+texture_filter = 1
+position = Vector2(275, 102)
+scale = Vector2(3.36364, 1.9375)
+sprite_frames = SubResource("SpriteFrames_4klj0")
+animation = &"hurt"
+
+[node name="GameOverSound" type="AudioStreamPlayer2D" parent="."]
+process_mode = 3
+position = Vector2(38, 7)
+stream = ExtResource("2_uv2rv")
+volume_db = 1.182
+autoplay = true
+
+[connection signal="pressed" from="gameOver/Reload" to="." method="_on_reload_pressed"]

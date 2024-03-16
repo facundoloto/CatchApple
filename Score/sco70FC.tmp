@@ -1,0 +1,41 @@
+[gd_scene load_steps=4 format=3 uid="uid://dpm6kfkmxanc1"]
+
+[ext_resource type="FontFile" uid="uid://dn3eouujxbfjf" path="res://Assets/PressStart2P-vaV7.ttf" id="1_us2ox"]
+[ext_resource type="Script" path="res://Score/score.gd" id="1_x2vup"]
+
+[sub_resource type="GDScript" id="GDScript_adyve"]
+script/source = "extends Label
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	pass
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta):
+	pass
+"
+
+[node name="Score" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_x2vup")
+
+[node name="points" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.033
+anchor_top = 0.029
+anchor_right = 0.033
+anchor_bottom = 0.029
+offset_left = -9.8
+offset_top = -6.6
+offset_right = 33.2
+offset_bottom = 16.4
+theme_override_fonts/font = ExtResource("1_us2ox")
+theme_override_font_sizes/font_size = 18
+script = SubResource("GDScript_adyve")

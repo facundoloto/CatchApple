@@ -1,0 +1,39 @@
+[gd_scene load_steps=7 format=3 uid="uid://bh0upk42n2j4j"]
+
+[ext_resource type="PackedScene" uid="uid://hlbsy5121cq4" path="res://Spawmer/spawner.tscn" id="1_2s0jy"]
+[ext_resource type="Script" path="res://Level/level_one.gd" id="1_veghb"]
+[ext_resource type="PackedScene" uid="uid://crty1q1ti8nv6" path="res://Player/Player.tscn" id="2_xy4qe"]
+[ext_resource type="PackedScene" uid="uid://ctrydn8f3d5c5" path="res://Scenes/areaCollision.tscn" id="3_rtjm8"]
+[ext_resource type="AudioStream" uid="uid://bwwsqexqmx4jj" path="res://Assets/Sonidos/05-gaseous-tethanus.mp3" id="5_g8owq"]
+[ext_resource type="PackedScene" uid="uid://dpm6kfkmxanc1" path="res://Score/score.tscn" id="6_6hc1x"]
+
+[node name="LevelOne" type="Node"]
+script = ExtResource("1_veghb")
+
+[node name="AreaCollision" parent="." instance=ExtResource("3_rtjm8")]
+
+[node name="Objects" type="Node2D" parent="."]
+
+[node name="Spawner" parent="Objects" instance=ExtResource("1_2s0jy")]
+position = Vector2(514, 26)
+
+[node name="Spawner2" parent="Objects" instance=ExtResource("1_2s0jy")]
+position = Vector2(366, 26)
+
+[node name="Spawner3" parent="Objects" instance=ExtResource("1_2s0jy")]
+position = Vector2(208, 27)
+
+[node name="Spawner4" parent="Objects" instance=ExtResource("1_2s0jy")]
+position = Vector2(59, 22)
+
+[node name="Player" parent="." instance=ExtResource("2_xy4qe")]
+position = Vector2(272, 307)
+
+[node name="Game" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("5_g8owq")
+
+[node name="Control" parent="." instance=ExtResource("6_6hc1x")]
+offset_left = 8.0
+offset_top = 16.0
+offset_right = 8.0
+offset_bottom = 16.0

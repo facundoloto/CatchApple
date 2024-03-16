@@ -1,7 +1,7 @@
 extends Node2D
 
 var colletion = preload("res://items.tscn")
-var level = 0
+var level = 4
 
 func _ready():
 	$Timer.stop()

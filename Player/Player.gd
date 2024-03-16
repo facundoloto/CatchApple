@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
 var speed = 150
-signal score_up 
+signal score_up(new_score)
 signal player_died
 @onready var animated_sprite_2d = $AnimatedSprite2D
 
@@ -33,9 +33,10 @@ func jump():
 			velocity.y += 10
 		move_and_slide()
 	
-func scoreUp():
+func scoreUp(points):
 		$Catch.play()
-		emit_signal("score_up")
+		Global.set_score(Global.get_score() + points)
+		emit_signal("score_up", Global.get_score() )
 		
 func died():
 		$Hurt.play()	

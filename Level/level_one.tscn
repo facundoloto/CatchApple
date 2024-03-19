@@ -12,28 +12,26 @@ script = ExtResource("1_veghb")
 
 [node name="AreaCollision" parent="." instance=ExtResource("3_rtjm8")]
 
-[node name="Objects" type="Node2D" parent="."]
-
-[node name="Spawner" parent="Objects" instance=ExtResource("1_2s0jy")]
-position = Vector2(514, 26)
-
-[node name="Spawner2" parent="Objects" instance=ExtResource("1_2s0jy")]
-position = Vector2(366, 26)
-
-[node name="Spawner3" parent="Objects" instance=ExtResource("1_2s0jy")]
-position = Vector2(208, 27)
-
-[node name="Spawner4" parent="Objects" instance=ExtResource("1_2s0jy")]
-position = Vector2(59, 22)
-
 [node name="Player" parent="." instance=ExtResource("2_xy4qe")]
 position = Vector2(272, 307)
 
 [node name="Game" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("5_g8owq")
+volume_db = 2.406
 
 [node name="Control" parent="." instance=ExtResource("6_6hc1x")]
 offset_left = 8.0
 offset_top = 16.0
 offset_right = 8.0
 offset_bottom = 16.0
+
+[node name="Objects" type="Node2D" parent="."]
+
+[node name="Spawner" parent="." instance=ExtResource("1_2s0jy")]
+position = Vector2(7, 3)
+
+[node name="Spawner2" parent="." instance=ExtResource("1_2s0jy")]
+position = Vector2(7, 3)
+
+[node name="Spawner3" parent="." instance=ExtResource("1_2s0jy")]
+position = Vector2(7, 3)

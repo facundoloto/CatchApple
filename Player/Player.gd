@@ -27,7 +27,7 @@ func jump():
 		if jump_velocity != 0 and is_on_floor():
 			$Jump.play()
 			velocity.y = 0
-			velocity.y -= jump_velocity * 350
+			velocity.y -= jump_velocity * 328
 		
 		if !is_on_floor():
 			velocity.y += 10

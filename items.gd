@@ -3,7 +3,7 @@ extends Area2D
 var isApple = true
 @onready var player = get_node("res://Player/Player.tscn")
 var colletion = preload("res://items.tscn")
-var Speed := 1.0
+var Speed : float = 0.0
 var scorePlayer = 0
 
 func _ready():
@@ -24,3 +24,7 @@ func _on_body_entered(body):
 
 func _process(delta):
 	position.y += Speed
+
+
+func _on_visible_on_screen_notifier_2d_screen_exited():
+		queue_free()

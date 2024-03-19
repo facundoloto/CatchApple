@@ -1,0 +1,113 @@
+[gd_scene load_steps=11 format=3 uid="uid://cr1dc6dqkvd7j"]
+
+[ext_resource type="FontFile" uid="uid://dn3eouujxbfjf" path="res://Assets/PressStart2P-vaV7.ttf" id="1_fa0yo"]
+[ext_resource type="Script" path="res://Scenes/start.gd" id="1_rjq77"]
+[ext_resource type="Texture2D" uid="uid://bnbwqy6xqdonc" path="res://Assets/Jugador/idle/player-idle-1.png" id="2_e3t1b"]
+[ext_resource type="Texture2D" uid="uid://bd1jathmlqj1v" path="res://Assets/Background.png" id="2_tg7r5"]
+[ext_resource type="Texture2D" uid="uid://weg4xrc22kb1" path="res://Assets/Jugador/idle/player-idle-2.png" id="3_6oeuc"]
+[ext_resource type="Texture2D" uid="uid://dh1wyetn1f1sd" path="res://Assets/Jugador/idle/player-idle-3.png" id="4_41wlf"]
+[ext_resource type="Texture2D" uid="uid://c7o8f8acp8amb" path="res://Assets/Jugador/idle/player-idle-4.png" id="5_vgrbd"]
+[ext_resource type="Texture2D" uid="uid://c32uei3arv4gk" path="res://Assets/PngItem_1579149.png" id="8_7teqj"]
+[ext_resource type="AudioStream" uid="uid://pfy3d8li4a32" path="res://Assets/Sonidos/Daydream Anatomy - 8-Bit Heroes - 03 Nin10day.mp3" id="9_qtb8u"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_l3vit"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_e3t1b")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_6oeuc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_41wlf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_vgrbd")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
+
+[node name="Start" type="Node2D"]
+script = ExtResource("1_rjq77")
+
+[node name="Background" type="Sprite2D" parent="."]
+position = Vector2(285, 122)
+scale = Vector2(0.697198, 0.736444)
+texture = ExtResource("2_tg7r5")
+
+[node name="gameStart" type="CanvasLayer" parent="."]
+process_mode = 2
+
+[node name="Label" type="Label" parent="gameStart"]
+offset_left = 188.0
+offset_top = 18.0
+offset_right = 380.0
+offset_bottom = 66.0
+theme_override_fonts/font = ExtResource("1_fa0yo")
+theme_override_font_sizes/font_size = 48
+text = "FOXY"
+
+[node name="CharacterBody2D" type="CharacterBody2D" parent="gameStart"]
+
+[node name="Sprite2D" type="Sprite2D" parent="gameStart/CharacterBody2D"]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="gameStart/CharacterBody2D"]
+process_mode = 3
+texture_filter = 1
+position = Vector2(283, 114)
+scale = Vector2(3.36364, 2.65625)
+sprite_frames = SubResource("SpriteFrames_l3vit")
+animation = &"idle"
+
+[node name="Play" type="Button" parent="gameStart"]
+process_mode = 3
+layout_direction = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 240.0
+offset_top = -237.0
+offset_right = 323.0
+offset_bottom = -202.0
+grow_vertical = 0
+action_mode = 0
+text = "
+"
+icon = ExtResource("8_7teqj")
+flat = true
+expand_icon = true
+
+[node name="label2" type="Label" parent="gameStart"]
+offset_left = 84.0
+offset_top = 208.0
+offset_right = 480.0
+offset_bottom = 324.0
+theme_override_fonts/font = ExtResource("1_fa0yo")
+theme_override_font_sizes/font_size = 14
+text = "How play?
+
+jump - key space
+
+key left <-
+
+ key right ->
+"
+horizontal_alignment = 1
+
+[node name="Label2" type="Label" parent="gameStart"]
+offset_left = 143.0
+offset_top = 375.0
+offset_right = 543.0
+offset_bottom = 391.0
+theme_override_fonts/font = ExtResource("1_fa0yo")
+theme_override_font_sizes/font_size = 12
+text = "Game made by Facundo Loto"
+
+[node name="Intro" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("9_qtb8u")
+volume_db = -0.1
+
+[connection signal="pressed" from="gameStart/Play" to="." method="_on_play_pressed"]
